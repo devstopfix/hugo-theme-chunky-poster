@@ -41,16 +41,20 @@
                     {{- end }}
                 </ul>
 
-                <p class="text-muted">
-                    {{ if .Site.Copyright }}
-                        {{ .Site.Copyright | safeHTML }}
-                    {{ else }}
-                        Copyright &copy; {{ .Site.Title }} {{ now.Year }}
-                    {{ end }}
-                </p>
+                {{ if templates.Exists "partials/footer/site-footer.html" }}
+                    {{ partial "footer/site-footer.html" . }}   
+                {{ else }}
+                    <p class="text-muted">
+                        {{ if .Site.Copyright }}
+                            {{ .Site.Copyright | safeHTML }}
+                        {{ else }}
+                            Copyright &copy; {{ .Site.Title }} {{ now.Year }}
+                        {{ end }}
+                    </p>
+                {{ end }}
 
                 <p class="text-muted">
-                Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with <a href="https://github.com/puresyntax71/hugo-theme-chunky-poster" target="_blank">Chunky Poster</a>.
+                <small>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with modified <a href="https://github.com/puresyntax71/hugo-theme-chunky-poster" target="_blank">Chunky Poster</a> theme.</small>
                 </p>
             </div>
         </div>
